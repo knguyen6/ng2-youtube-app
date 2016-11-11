@@ -7,5 +7,4 @@ import { SearchComponent } from './search/search.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'Simple app'
 }

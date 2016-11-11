@@ -1,8 +1,16 @@
-<p>
-  search works!
-</p>
+<div>
+  <md-card color="primary">
+      <md-card-content>
+          <form>
+          <md-input style="width:100%" placeholder="Enter a keyword to search" class="demo-full-width">
+          </md-input>
+      </form>
+      </md-card-content>
+  </md-card>
 
-<!-- Build form here and pass parameters-->
-<button (click)="search('hello')">test</button>
-{{ videos | json }}
-{{ errorMessage }}
+  <button (click)="search('hello')">test</button>
+
+  <!--{{ videos | json }} Render videos if response is 200-->
+
+  <!--{{ errorMessage }} Otherwise render the error message-->
+</div>

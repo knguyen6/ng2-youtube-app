@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 
-import {API_KEY, YOUTUBE_SEARCH_API} from './app.globals';
+import { API_KEY, YOUTUBE_SEARCH_API } from './app.globals';
 import { Observable } from 'rxjs';
 
 Injectable()
@@ -10,11 +10,12 @@ export class YoutubeService {
   constructor(@Inject(Http) public http: Http) {}
 
   search(searchString: string): Observable<any> {
+    console.log(searchString);
     let options = { search: this.buildParams(searchString) };
 
     return this.http
       .get(YOUTUBE_SEARCH_API, options)
-      .map((response: Response) => { JSON.parse(response['_body']); })
+      .map((response: Response) => { return JSON.parse(response['_body']); })
       .catch(error => Observable.throw(error));
   }
 

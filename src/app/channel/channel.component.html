@@ -16,10 +16,20 @@
   </nav>
 </div>
 
-<div *ngIf="channelResults.length > 0">
-  <h1>Title: {{channelResults[0].snippet.title}}</h1>
-  <h1>Description: {{channelResults[0].snippet.description}}</h1>
-  <h1>Published At: {{channelResults[0].snippet.publishedAt}}</h1>
-  <h1>View Count: {{channelResults[0].statistics.viewCount}}</h1>
-  <h1>Subscriber Count: {{channelResults[0].statistics.subscriberCount}}</h1>
+<div *ngIf="channelResults.length > 0" class="container">
+
+  <div class="col s12 m7">
+    <h5 class="header">{{channelResults[0].snippet.title}}</h5>
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Description: {{channelResults[0].snippet.description}}</p>
+          <p>Published At: {{channelResults[0].snippet.publishedAt}}</p>
+          <p>View Count: {{channelResults[0].statistics.viewCount}}</p>
+          <p>Subscriber Count: {{channelResults[0].statistics.subscriberCount}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
 
 Injectable()
 export class YoutubeService {
-
-  constructor(@Inject(Http) public http: Http) {}
+  constructor(@Inject(Http) public http: Http) {
+  }
 
   search(searchString: string): Observable<any> {
+
     let options = { search: this.buildParams({
       key: API_KEY,
       q: searchString,
@@ -17,10 +18,10 @@ export class YoutubeService {
       maxResults: '20',
       order: 'relevance'
     }) };
-
     return this.http
       .get(YOUTUBE_SEARCH_API, options)
-      .map((response: Response) => { return JSON.parse(response['_body']); })
+      .map((response: Response) => {
+          return JSON.parse(response['_body']); })
       .catch(error => Observable.throw(error));
   }
 

@@ -5,10 +5,20 @@
          <div class="input-field col s12">
              <i class="material-icons prefix">search</i>
              <input #searchBox id="search-box"
-                placeholder="Enter keyword to search"type="text" (keyup)="onKey($event, searchBox.value)"
+                placeholder="Enter keyword to search" type="text"
+                (keyup)="onKey($event, searchBox.value)"
                 class="validate">
          </div>
      </form>
    </div>
  </nav>
+</div>
+
+
+<div class="padding-top5">
+
+    <ul class="collection">
+        <li class="collection-header"><h5>Results</h5></li>
+        <li class="collection-item" *ngFor="let result of searchResults">{{result.snippet.title}}</li>
+    </ul>
 </div>

@@ -1,4 +1,4 @@
-<div class="padding-top5">
+<div class="container padding-top5">
   <nav>
     <div class="nav-wrapper">
       <form>
@@ -14,4 +14,12 @@
       </form>
     </div>
   </nav>
+</div>
+
+<div *ngIf="channelResults.length > 0">
+  <h1>Title: {{channelResults[0].snippet.title}}</h1>
+  <h1>Description: {{channelResults[0].snippet.description}}</h1>
+  <h1>Published At: {{channelResults[0].snippet.publishedAt}}</h1>
+  <h1>View Count: {{channelResults[0].statistics.viewCount}}</h1>
+  <h1>Subscriber Count: {{channelResults[0].statistics.subscriberCount}}</h1>
 </div>

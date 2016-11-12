@@ -15,3 +15,10 @@
    </div>
  </nav>
 </div>
+
+<div class="padding-top5">
+  <ul class="collection">
+    <li class="collection-header"><h5>Results</h5></li>
+    <li class="collection-item" *ngFor="let result of searchResults">{{result.snippet.title}}</li>
+  </ul>
+</div>

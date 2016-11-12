@@ -8,8 +8,9 @@ import { YoutubeService } from "../youtube.service";
   providers: [ YoutubeService ]
 })
 export class SearchComponent implements OnInit {
-  searchResults: Array<any>;
-  errorMessage: any;
+
+   searchResults: Array<any>;
+   errorMessage: any;
 
   constructor(private service: YoutubeService) {}
 
@@ -17,12 +18,13 @@ export class SearchComponent implements OnInit {
     this.searchResults = [];
   }
 
-  onKey(event, searchString) {
+//key event for search box
+  onKey(event, searchString):void {
     if(event.keyCode == 13){
       this.service
         .search(searchString)
         .subscribe(
-          (response) => { this.searchResults = response.items },
+          (response) => { this.searchResults = response.items;console.log(response); },
           (error) => { this.errorMessage = error }
         );
     }

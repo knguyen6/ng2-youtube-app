@@ -1,3 +1,37 @@
-<p>
-  video works!
-</p>
+
+<div class="container padding-top5">
+<nav>
+   <div class="nav-wrapper">
+     <form>
+         <div class="input-field col s12">
+             <i class="material-icons prefix">search</i>
+             <input #videoId
+                placeholder="Enter a video's Id to search" type="text"
+                (keyup)="searchVideo($event, videoId.value)"
+                class="validate">
+         </div>
+     </form>
+   </div>
+ </nav>
+</div>
+
+
+<div class="padding-top5">
+
+    <div class="col s12 m12 container" *ngFor="let result of videoDetail">
+        <h5 class="header">Id: {{result.id}}</h5>
+        <div class="card horizontal">
+          <div class="card-stacked">
+            <div class="card-content">
+                <p>Title: {{result.snippet.title}}</p>
+                <p>Chanel title: {{result.snippet.channelTitle}}</p>
+                <p>Published At: {{result.snippet.publistedAt}}</p>
+                <p>Description: {{result.snippet.description}}</p>
+            </div>
+
+          </div>
+    </div>
+  </div>
+
+
+</div>

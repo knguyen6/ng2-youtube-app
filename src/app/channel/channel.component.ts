@@ -1,15 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { YoutubeService } from "../youtube.service";
 
 @Component({
   selector: 'app-channel',
   templateUrl: './channel.component.html',
-  styleUrls: ['./channel.component.css']
+  styleUrls: ['./channel.component.css'],
+  providers: [ YoutubeService ]
 })
 export class ChannelComponent implements OnInit {
+  channelResults: Array<any>;
+  errorMessage: any;
 
-  constructor() { }
+  constructor(private service: YoutubeService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.channelResults = [];
+  }
+
+  onKey(event, channelId) {
+    if(event.keyCode == 13){
+      this.service
+        .viewChannel(channelId)
+        .subscribe(
+          response => this.channelResults = response.items,
+          error => this.errorMessage = error
+        );
+    }
   }
 
 }

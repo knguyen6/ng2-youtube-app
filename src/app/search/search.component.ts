@@ -17,18 +17,14 @@ export class SearchComponent implements OnInit {
     this.searchResults = [];
   }
 
-  search(searchString: string): void {
-    this.service.search(searchString)
-      .subscribe(
-        (response) => { this.searchResults = response.items },
-        (error) => { this.errorMessage = error }
-      );
-  }
-
   onKey(event, searchString) {
     if(event.keyCode == 13){
-        //pass input value search function
-        console.log("hey you wanna search for ? ", searchString);
+      this.service
+        .search(searchString)
+        .subscribe(
+          (response) => { this.searchResults = response.items },
+          (error) => { this.errorMessage = error }
+        );
     }
   }
 

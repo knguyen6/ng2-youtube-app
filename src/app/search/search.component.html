@@ -4,9 +4,12 @@
      <form>
          <div class="input-field col s12">
              <i class="material-icons prefix">search</i>
-             <input #searchBox id="search-box"
-                placeholder="Enter keyword to search"type="text" (keyup)="onKey($event, searchBox.value)"
-                class="validate">
+             <input #searchBox
+                id="search-box"
+                placeholder="Enter keyword to search"
+                type="text"
+                class="validate"
+                (keyup)="onKey($event, searchBox.value)">
          </div>
      </form>
    </div>

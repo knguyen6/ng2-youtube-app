@@ -8,28 +8,26 @@ import { YoutubeService } from "../youtube.service";
   providers: [ YoutubeService ]
 })
 export class SearchComponent implements OnInit {
-  videos: Array<any>;
+  searchResults: Array<any>;
   errorMessage: any;
 
   constructor(private service: YoutubeService) {}
 
   ngOnInit(): void {
-    this.videos = [];
+    this.searchResults = [];
   }
 
   search(searchString: string): void {
     this.service.search(searchString)
       .subscribe(
-        (response) => { this.videos = response.items },
+        (response) => { this.searchResults = response.items },
         (error) => { this.errorMessage = error }
       );
   }
 
-
-//key event for search box
   onKey(event, searchString) {
     if(event.keyCode == 13){
-        //pass input value search function 
+        //pass input value search function
         console.log("hey you wanna search for ? ", searchString);
     }
   }

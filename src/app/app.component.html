@@ -1,14 +1,11 @@
+<nav>
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a routerLink="search">Search</a></li>
+      <li><a routerLink="video/:id">Video</a></li>
+      <li><a routerLink="channel/:id">Channel</a></li>
+    </ul>
+  </div>
+</nav>
 
-
-<div class="row">
-    <div class="col s12">
-        <app-search></app-search>
-    </div>
-</div>
-
-
-<div class="row zero-space">
-    <div class="col s12">
-        <app-result></app-result>
-    </div>
-</div>
+<router-outlet></router-outlet>

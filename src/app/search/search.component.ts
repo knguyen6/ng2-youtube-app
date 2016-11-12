@@ -25,4 +25,13 @@ export class SearchComponent implements OnInit {
       );
   }
 
+
+//key event for search box
+  onKey(event, searchString) {
+    if(event.keyCode == 13){
+        //pass input value search function 
+        console.log("hey you wanna search for ? ", searchString);
+    }
+  }
+
 }

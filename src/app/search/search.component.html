@@ -1,16 +1,28 @@
-<div>
-  <md-card color="primary">
-      <md-card-content>
-          <form>
-          <md-input style="width:100%" placeholder="Enter a keyword to search" class="demo-full-width">
-          </md-input>
-      </form>
-      </md-card-content>
-  </md-card>
+<!--{{ videos | json }} Render videos if response is 200-->
 
-  <button (click)="search('hello')">test</button>
+<!--{{ errorMessage }} Otherwise render the error message-->
 
-  <!--{{ videos | json }} Render videos if response is 200-->
-
-  <!--{{ errorMessage }} Otherwise render the error message-->
+<div class="padding-top5">
+<nav>
+   <div class="nav-wrapper">
+     <form>
+         <div class="input-field col s12">
+             <i class="material-icons prefix">search</i>
+             <input #searchBox id="search-box"
+                placeholder="Enter keyword to search"type="text" (keyup)="onKey($event, searchBox.value)"
+                class="validate">
+         </div>
+     </form>
+   </div>
+ </nav>
 </div>
+
+
+  <!-- Search box here-->
+  <!-- <div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">search</i>
+        <input  id="keyword_search" type="text" class="validate">
+        <label for="keyword_search">Enter keyword to search</label>
+    </div>
+  </div> -->

@@ -10,8 +10,13 @@ export class YoutubeService {
   constructor(@Inject(Http) public http: Http) {}
 
   search(searchString: string): Observable<any> {
-    console.log(searchString);
-    let options = { search: this.buildParams(searchString) };
+    let options = { search: this.buildParams({
+      key: API_KEY,
+      q: searchString,
+      part: 'snippet',
+      maxResults: '20',
+      order: 'relevance'
+    }) };
 
     return this.http
       .get(YOUTUBE_SEARCH_API, options)
@@ -19,13 +24,11 @@ export class YoutubeService {
       .catch(error => Observable.throw(error));
   }
 
-  buildParams(searchString: string): URLSearchParams {
+  buildParams(parameters: any): URLSearchParams {
     let params = new URLSearchParams();
-    params.set('key', API_KEY);
-    params.set('q', searchString);
-    params.set('part', 'snippet');
-    params.set('maxResults', '20');
-    params.set('order', 'relevance');
+    for (let param of Object.keys(parameters)) {
+      params.set(param, parameters[param]);
+    }
     return params;
   }
 }

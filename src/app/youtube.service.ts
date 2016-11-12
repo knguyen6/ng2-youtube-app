@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 
-import { API_KEY, YOUTUBE_SEARCH_API } from './app.globals';
+import {API_KEY, YOUTUBE_SEARCH_API, YOUTUBE_CHANNELS_API} from './app.globals';
 import { Observable } from 'rxjs';
 
 Injectable()
@@ -20,6 +20,19 @@ export class YoutubeService {
 
     return this.http
       .get(YOUTUBE_SEARCH_API, options)
+      .map((response: Response) => { return JSON.parse(response['_body']); })
+      .catch(error => Observable.throw(error));
+  }
+
+  viewChannel(channelId: string): Observable<any> {
+    let options = this.buildParams({
+      key: API_KEY,
+      part: `contentDetails,contentOwnerDetails,id,snippet,statistics,status,topicDetails`,
+      id: channelId
+    });
+
+    return this.http
+      .get(`${YOUTUBE_CHANNELS_API}?${options.toString()}`)
       .map((response: Response) => { return JSON.parse(response['_body']); })
       .catch(error => Observable.throw(error));
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { YoutubeService } from "../youtube.service";
 
 @Component({
@@ -8,7 +8,7 @@ import { YoutubeService } from "../youtube.service";
   providers: [YoutubeService]
 })
 export class VideoComponent implements OnInit {
-  videoDetail: Array<any>;
+  @Input() videoDetail: Array<any>;
   errorMessage: any;
   constructor(private service: YoutubeService) {}
 

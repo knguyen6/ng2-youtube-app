@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { YoutubeService } from "../youtube.service";
 
 @Component({
@@ -9,9 +9,11 @@ import { YoutubeService } from "../youtube.service";
 })
 export class SearchComponent implements OnInit {
 
-   searchResults: Array<any>;
+   @Input() searchResults: Array<any>;
 
-  constructor(private service: YoutubeService) {}
+  constructor(private service: YoutubeService) {
+    console.log('searchResults', this.searchResults);
+  }
 
   ngOnInit(): void {
     this.searchResults = [];

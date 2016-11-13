@@ -1,3 +1,12 @@
+<nav class="container">
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li *ngFor="let api of apiCalls">
+        <a class="waves-effect waves-teal btn-flat" (click)="setSelected(api)">{{api}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <div class="container padding-top5">
   <form>
@@ -5,7 +14,7 @@
       <i class="material-icons prefix">search</i>
       <input #searchBox
              id="search-box"
-             placeholder="Enter keyword to search"
+             placeholder="Enter resource id or keyword to search"
              type="text"
              class="validate"
              (keyup)="onKey($event, searchBox.value)">
@@ -13,8 +22,8 @@
   </form>
 </div>
 
-<div [ngSwitch]="selected">
-  <!--<app-search *ngSwitchCase="SEARCH"></app-search>-->
-  <!--<app-video *ngSwitchCase="VIDEOS"></app-video>-->
-  <!--<app-channel *ngSwitchCase="CHANNELS"></app-channel>-->
+<div class="container padding-top5" [ngSwitch]="selected">
+  <app-search *ngSwitchCase="'SEARCH'" [searchResults]="content"></app-search>
+  <app-video *ngSwitchCase="'VIDEO'" [videoDetail]="content"></app-video>
+  <app-channel *ngSwitchCase="'CHANNEL'" [channelResults]="content"></app-channel>
 </div>

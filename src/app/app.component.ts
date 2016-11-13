@@ -34,9 +34,10 @@ export class AppComponent implements OnInit {
     this.selected = Object.keys(this.apiCalls)[0];
   }
 
-  setSelected(selected: string): void {
+  setSelected(selected: string, searchBox: any): void {
     this.selected = selected;
     this.placeHolderMessage = this.apiCalls[selected];
+    searchBox.value = '';
   }
 
   onKey(searchString):void {

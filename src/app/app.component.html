@@ -2,7 +2,7 @@
   <div class="nav-wrapper">
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li *ngFor="let api of apis">
-        <a class="waves-effect waves-teal btn-flat" (click)="setSelected(api)">{{api}}</a>
+        <a class="waves-effect waves-teal btn-flat" (click)="setSelected(api, searchBox)">{{api}}</a>
       </li>
     </ul>
   </div>

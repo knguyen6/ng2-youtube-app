@@ -25,7 +25,7 @@
 </div>
 
 <div class="container padding-top5" [ngSwitch]="selected">
-  <app-search *ngSwitchCase="'SEARCH'" [searchResults]="content"></app-search>
-  <app-video *ngSwitchCase="'VIDEO'" [videoDetail]="content"></app-video>
-  <app-channel *ngSwitchCase="'CHANNEL'" [channelResults]="content"></app-channel>
+  <app-search *ngSwitchCase="'search'" [searchResults]="content"></app-search>
+  <app-video *ngSwitchCase="'videos'" [videoDetail]="content"></app-video>
+  <app-channel *ngSwitchCase="'channels'" [channelResults]="content"></app-channel>
 </div>

@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChannelComponent implements OnInit {
   @Input() channelResults: Array<any>;
+
   errorMessage: any;
 
   constructor() {}

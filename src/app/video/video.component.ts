@@ -10,7 +10,7 @@ export class VideoComponent implements OnInit {
   errorMessage: any;
   constructor() {}
 
-    ngOnInit(): void {
-        this.videoDetail = [];
-    }
+  ngOnInit(): void {
+      this.videoDetail = [];
+  }
 }

@@ -2,18 +2,20 @@
   <div class="nav-wrapper">
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li *ngFor="let api of apis">
-        <a class="waves-effect waves-teal btn-flat" (click)="setSelected(api, searchBox)">{{api}}</a>
+        <a class="waves-effect waves-orange btn-flat" (click)="setSelected(api)">{{api}}</a>
       </li>
     </ul>
   </div>
 </nav>
 
 <div class="container padding-top5">
-  <form>
+  <form #f="ngForm">
     <div class="input-field col s12">
       <i class="material-icons prefix">search</i>
       <input #searchBox
              id="search-box"
+             [ngModelOptions]="{standalone: true}"
+             [(ngModel)]="searchText"
              placeholder="{{placeHolderMessage}}"
              type="text"
              class="validate"

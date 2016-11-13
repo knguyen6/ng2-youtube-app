@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
 
   public placeHolderMessage: string;
 
+  public searchText: string;
+
   constructor(private service: YoutubeService) {}
 
   ngOnInit(): void {
@@ -34,10 +36,10 @@ export class AppComponent implements OnInit {
     this.selected = Object.keys(this.apiCalls)[0];
   }
 
-  setSelected(selected: string, searchBox: any): void {
+  setSelected(selected: string): void {
     this.selected = selected;
     this.placeHolderMessage = this.apiCalls[selected];
-    searchBox.value = '';
+    this.searchText='';
   }
 
   onKey(searchString):void {
@@ -47,7 +49,7 @@ export class AppComponent implements OnInit {
           this.service
             .search(searchString)
             .subscribe(
-              (response) => { console.log(response); this.content = response.items; },
+              (response) => {console.log(response); this.content = response.items; },
               (error) => { this.errorMessage = error }
             );
           break;

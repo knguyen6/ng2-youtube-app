@@ -9,9 +9,7 @@ export class SearchComponent implements OnInit {
 
    @Input() searchResults: Array<any>;
 
-  constructor() {
-    console.log('searchResults', this.searchResults);
-  }
+  constructor() { }
 
   ngOnInit(): void {
     this.searchResults = [];

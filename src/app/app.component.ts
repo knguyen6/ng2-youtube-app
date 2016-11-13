@@ -13,22 +13,33 @@ export class AppComponent implements OnInit {
 
   public selected: string;
 
-  public apiCalls: Array<string>;
+  public apiCalls: any;
+
+  public apis: Array<string>;
 
   public errorMessage: any;
+
+  public placeHolderMessage: string;
 
   constructor(private service: YoutubeService) {}
 
   ngOnInit(): void {
-    this.selected = 'SEARCH';
-    this.apiCalls = ['SEARCH', 'VIDEO', 'CHANNEL'];
+    this.apiCalls = {
+      SEARCH: 'Enter keyword to search',
+      VIDEO: 'Enter video ID',
+      CHANNEL: 'Enter channel ID'
+    };
+    this.placeHolderMessage = 'Enter keyword to search';
+    this.apis = Object.keys(this.apiCalls);
+    this.selected = Object.keys(this.apiCalls)[0];
   }
 
   setSelected(selected: string): void {
     this.selected = selected;
+    this.placeHolderMessage = this.apiCalls[selected];
   }
 
-  onKey(event, searchString):void {
+  onKey(event, searchString): void {
     if(event.keyCode == 13) {
       switch(this.selected) {
         case 'SEARCH':

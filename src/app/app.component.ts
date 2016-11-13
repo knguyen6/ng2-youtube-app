@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
       VIDEO: 'Enter video ID',
       CHANNEL: 'Enter channel ID'
     };
-    this.placeHolderMessage = 'Enter keyword to search';
+    this.placeHolderMessage = this.apiCalls.SEARCH;
     this.apis = Object.keys(this.apiCalls);
     this.selected = Object.keys(this.apiCalls)[0];
   }
@@ -43,42 +43,49 @@ export class AppComponent implements OnInit {
   }
 
   onKey(searchString):void {
-      switch(this.selected) {
-        case 'SEARCH':
-          console.log('invoking search service');
-          this.service
-            .search(searchString)
-            .subscribe(
-              (response) => {console.log(response); this.content = response.items; },
-              (error) => { this.errorMessage = error }
-            );
-          break;
-        case 'VIDEO':
-          console.log('invoking video service');
-          this.service
-            .viewVideo(searchString)
-            .subscribe(
-              (response) => { console.log(response); this.content = response.items; },
-              (error) => { this.errorMessage = error }
-            );
-          break;
-        case 'CHANNEL':
-          console.log('invoking channel service');
-          this.service
-            .viewChannel(searchString)
-            .subscribe(
-              (response) => { console.log(response); this.content = response.items; },
-              (error) => { this.errorMessage = error }
-            );
-          break;
-        default:
-          this.service
-            .search(searchString)
-            .subscribe(
-              (response) => { console.log(response); this.content = response.items; },
-              (error) => { this.errorMessage = error }
-            );
-          break;
-      }
+    const keys = Object.keys(this.apiCalls);
+    switch(this.selected) {
+      case keys[0]:
+        console.log('invoking search service');
+        this.service['search'](searchString)
+          .subscribe(
+            (response) => {console.log(response); this.content = response.items; },
+            (error) => { this.errorMessage = error }
+          );
+        break;
+      case keys[1]:
+        console.log('invoking video service');
+        this.service
+          .viewVideo(searchString)
+          .subscribe(
+            (response) => { console.log(response); this.content = response.items; },
+            (error) => { this.errorMessage = error }
+          );
+        break;
+      case keys[2]:
+        console.log('invoking channel service');
+        this.service
+          .viewChannel(searchString)
+          .subscribe(
+            (response) => { console.log(response); this.content = response.items; },
+            (error) => { this.errorMessage = error }
+          );
+        break;
+      default:
+        this.service['search'](searchString)
+          .subscribe(
+            (response) => { console.log(response); this.content = response.items; },
+            (error) => { this.errorMessage = error }
+          );
+        break;
+    }
+  }
+
+  callYoutubeApi(api: string, searchString: string): void {
+    this.service[api](searchString)
+      .subscribe(
+        (response) => { console.log(response); this.content = response.items; },
+        (error) => { this.errorMessage = error }
+      );
   }
 }

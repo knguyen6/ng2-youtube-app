@@ -37,11 +37,11 @@ export class YoutubeService {
       .catch(error => Observable.throw(error));
   }
 
-  viewVideo(videoId: string): Observable<any>{
+  viewVideo(commaSeparatedIds: string): Observable<any>{
       let options = this.buildParams({
           key: API_KEY,
-          part:`contentDetails,id, snippet,topicDetails`,
-          id: videoId
+          part: `id,contentDetails,liveStreamingDetails,localizations,player,recordingDetails,snippet,statistics,status,topicDetails`,
+          id: commaSeparatedIds
       });
       return this.http
       .get(`${YOUTUBE_VIDEOS_API}?${options.toString()}`)

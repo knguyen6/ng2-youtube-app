@@ -1,16 +1,17 @@
 <div class="padding-top5">
-    <div class="col s12 m12 container" *ngFor="let result of videoDetail">
-        <h5 class="header">Id: {{result.id}}</h5>
-        <div class="card horizontal">
-          <div class="card-stacked">
-            <div class="card-content">
-                <p>Title: {{result.snippet.title}}</p>
-                <p>Chanel title: {{result.snippet.channelTitle}}</p>
-                <p>Published At: {{result.snippet.publistedAt}}</p>
-                <p>Description: {{result.snippet.description}}</p>
-            </div>
-
-          </div>
+  <div class="col s12 m12 container" *ngFor="let result of videoDetail">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="{{result.snippet.thumbnails.medium.url}}">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">{{result.snippet.title}}<i class="material-icons right">more_vert</i></span>
+        <p><a href="https://www.youtube.com/channel/{{result.snippet.channelId}}">{{result.snippet.channelTitle}}</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+        <p>{{result.snippet.description}}</p>
+      </div>
     </div>
   </div>
 </div>

@@ -1,11 +1,20 @@
-<nav>
-  <div class="nav-wrapper">
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a routerLink="search">Search</a></li>
-      <li><a routerLink="video/:id">Video</a></li>
-      <li><a routerLink="channel/:id">Channel</a></li>
-    </ul>
-  </div>
-</nav>
 
-<router-outlet></router-outlet>
+<div class="container padding-top5">
+  <form>
+    <div class="input-field col s12">
+      <i class="material-icons prefix">search</i>
+      <input #searchBox
+             id="search-box"
+             placeholder="Enter keyword to search"
+             type="text"
+             class="validate"
+             (keyup)="onKey($event, searchBox.value)">
+    </div>
+  </form>
+</div>
+
+<div [ngSwitch]="selected">
+  <!--<app-search *ngSwitchCase="SEARCH"></app-search>-->
+  <!--<app-video *ngSwitchCase="VIDEOS"></app-video>-->
+  <!--<app-channel *ngSwitchCase="CHANNELS"></app-channel>-->
+</div>

@@ -12,12 +12,11 @@ export class VideoComponent implements OnInit {
   errorMessage: any;
   constructor(private service: YoutubeService) {}
 
-    ngOnInit():void {
+    ngOnInit(): void {
         this.videoDetail = [];
     }
-//Test videoId: zQCc2eybk9I
-    searchVideo(event, videoId):void{
 
+    searchVideo(event, videoId): void {
         if(event.keyCode == 13){
             this.service.viewVideo(videoId)
             .subscribe(

@@ -1,24 +1,8 @@
-<div class="container padding-top5">
-<nav>
-   <div class="nav-wrapper">
-     <form>
-         <div class="input-field col s12">
-             <i class="material-icons prefix">search</i>
-             <input #searchBox
-                id="search-box"
-                placeholder="Enter keyword to search"
-                type="text"
-                class="validate"
-                (keyup)="onKey($event, searchBox.value)">
-         </div>
-     </form>
-   </div>
- </nav>
-</div>
-
-
 <div class="padding-top5 container">
     <ul class="collection">
-        <li class="collection-item" *ngFor="let result of searchResults">{{result.snippet.title}}</li>
+        <li class="collection-item"
+            *ngFor="let result of searchResults">
+          {{result.snippet.title}}
+        </li>
     </ul>
 </div>

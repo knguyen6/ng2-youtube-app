@@ -17,7 +17,7 @@
              placeholder="{{placeHolderMessage}}"
              type="text"
              class="validate"
-             (keyup)="onKey($event, searchBox.value)">
+             (keyup.enter)="onKey(searchBox.value)">
     </div>
   </form>
 </div>

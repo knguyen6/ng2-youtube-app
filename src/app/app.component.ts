@@ -39,8 +39,7 @@ export class AppComponent implements OnInit {
     this.placeHolderMessage = this.apiCalls[selected];
   }
 
-  onKey(event, searchString): void {
-    if(event.keyCode == 13) {
+  onKey(searchString):void {
       switch(this.selected) {
         case 'SEARCH':
           console.log('invoking search service');
@@ -78,6 +77,5 @@ export class AppComponent implements OnInit {
             );
           break;
       }
-    }
   }
 }

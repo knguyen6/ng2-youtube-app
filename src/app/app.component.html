@@ -2,7 +2,7 @@
   <div class="nav-wrapper">
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li *ngFor="let api of apiCalls">
-        <a class="waves-effect waves-teal btn-flat" (click)="setSelected(api)">{{api}}</a>
+        <a class="waves-effect waves-orange btn-flat" (click)="setSelected(api)">{{api}}</a>
       </li>
     </ul>
   </div>
@@ -17,7 +17,7 @@
              placeholder="Enter resource id or keyword to search"
              type="text"
              class="validate"
-             (keyup)="onKey($event, searchBox.value)">
+             (keyup.enter)="onKey(searchBox.value)">
     </div>
   </form>
 </div>
